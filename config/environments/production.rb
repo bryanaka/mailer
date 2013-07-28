@@ -1,3 +1,0 @@
-configure :production do
-	
-end

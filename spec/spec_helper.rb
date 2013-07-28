@@ -1,9 +1,12 @@
+ENV['RACK_ENV'] ||= 'test'
 
-require 'rspec'
+require File.expand_path('../../app', __FILE__)
 require 'rack/test'
-
-set :environment, :test
+require 'email_spec'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  def app
+    Sinatra::Application
+  end
 end

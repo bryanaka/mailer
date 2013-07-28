@@ -1,3 +1,0 @@
-configure :test do
-	
-end

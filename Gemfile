@@ -1,9 +1,10 @@
 source "http://rubygems.org"
-# ====================
+
 # Universal Gems
-# ====================
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'puma'
+gem 'pony'
 
 group :development do
 	gem 'shotgun'
@@ -18,7 +19,7 @@ end
 
 group :test do 
 	gem 'rspec'
-
+	gem 'email_spec'
 end
 
 group :production do

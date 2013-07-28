@@ -1,2 +1,4 @@
 config/application.yml
+config/secrets.rb
 *.tmp
+tmp/*

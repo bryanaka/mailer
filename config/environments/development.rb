@@ -1,3 +1,0 @@
-configure :development do
-	
-end
