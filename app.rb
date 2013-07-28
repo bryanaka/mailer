@@ -5,7 +5,6 @@ error 405 do
 end
 
 before '/api/*' do
-	puts request.request_method
 	if request.request_method == 'GET'
 		halt 405
 	end

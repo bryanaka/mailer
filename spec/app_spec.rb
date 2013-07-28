@@ -15,6 +15,7 @@ let(:demo_json){ { to: "John G <jmondo@newrelic.com>", subject: "hello world", b
 			get '/api/nr_mailer'
 
 			last_response.status.should eq(405)
+			last_response.content_type.should eq('application/json')
 			last_response.body.should eq( {errors: [{ message: "This resource only responses to a post request. Please refer to the documentation" }] }.to_json )
 		end
 
@@ -23,6 +24,7 @@ let(:demo_json){ { to: "John G <jmondo@newrelic.com>", subject: "hello world", b
 			post '/api/nr_mailer'
 
 			last_response.status.should eq(400)
+			last_response.content_type.should eq('application/json')
 			last_response.body.should eq( { errors: [{ message: "This resource requires you post JSON data with the to, subject, and body attributes." }] }.to_json )
 
 		end
