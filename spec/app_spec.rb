@@ -12,7 +12,7 @@ let(:demo_json){ { to: "John G <jmondo@newrelic.com>", subject: "hello world", b
 	context "New Relic Mailer Endpoint 'api/nr_mailer' " do
 
 		it "should respond to a get request with a 405 error" do
-			get '/nr_mailer'
+			get '/api/nr_mailer'
 
 			last_response.status.should eq(405)
 			last_response.body.should eq( {errors: [{ message: "This resource only responses to a post request. Please refer to the documentation" }] }.to_json )
@@ -20,7 +20,7 @@ let(:demo_json){ { to: "John G <jmondo@newrelic.com>", subject: "hello world", b
 
 		it "should respond to post request with no data with an error, asking for data" do
 			
-			post 'api/nr_mailer'
+			post '/api/nr_mailer'
 
 			last_response.status.should eq(400)
 			last_response.body.should eq( { errors: [{ message: "This resource requires you post JSON data with the to, subject, and body attributes." }] }.to_json )
