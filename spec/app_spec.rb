@@ -18,7 +18,7 @@ describe app do
 
 			last_response.status.should eq(405)
 			last_response.content_type.should eq(json_format)
-			last_response.body.should eq( {errors: [{ message: "This resource only responses to a post request. Please refer to the documentation" }] }.to_json )
+			last_response.body.should eq( {errors: [{ message: 'This resource only responses to a POST request. Please refer to the documentation' }] }.to_json )
 		end
 
 		it "should respond to post request with no data with an error, asking for data" do
@@ -27,7 +27,7 @@ describe app do
 
 			last_response.status.should eq(400)
 			last_response.content_type.should eq(json_format)
-			last_response.body.should eq( { errors: [{ message: "This resource requires you post JSON data with the to, subject, and body attributes." }] }.to_json )
+			last_response.body.should eq( { errors: [{ message: 'This resource requires you post JSON data with the "to", "subject", and "body" attributes.' }] }.to_json )
 
 		end
 
