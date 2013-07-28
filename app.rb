@@ -5,6 +5,7 @@ error 405 do
 end
 
 before '/api/*' do
+	content_type :json
 	if request.request_method == 'GET'
 		halt 405
 	end
