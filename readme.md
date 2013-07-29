@@ -19,7 +19,7 @@ Resources are always returned inside an array (both singular and collections)
 Usage and Set up
 --------------------------
 
-To use this app, you must make sure to set up the ENV['MANDRILL\_USER'] and ENV['MANDRILL\_API\_KEY'] variables. You can also use any other SMTP provider of your choice, such as gMail.
+To use this app, you must make sure to set up the ENV['MANDRILL\_USER'] and ENV['MANDRILL\_API\_KEY'] variables. You can also use any other SMTP provider of your choice, such as gmail.
 
 You can do this via the provided `secrets.rb` (see secrets.example.rb) or via something more akin Foreman's `.env` file or Fiagro's `application.yml` file
 
@@ -40,7 +40,7 @@ Endpoints
 
 Example of the data that should be posted:  
 
-    { "to": "guy <yoguy@newrelic.com>", "subject": "hello world", "body": "Hi guy! Sending you an email via this awesome API I just made on the interwebs." }
+    { "to": "guy <yoguy@example.com>", "subject": "hello world", "body": "Hi guy! Sending you an email via this awesome API I just made on the interwebs." }
 
 ##### Returns
 
