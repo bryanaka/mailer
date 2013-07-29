@@ -27,12 +27,12 @@ describe app do
 
 	end
 
-	describe "New Relic Mailer Endpoint 'api/nr_mailer' " do
+	describe "New Relic Mailer Endpoint 'api/mailer' " do
 
 		context "has a malformed request" do
 
 			it "should respond to a get request with a 405 error" do
-				get '/api/nr_mailer'
+				get '/api/mailer'
 
 				last_response.status.should eq(405)
 				last_response.content_type.should eq(json_format)
@@ -40,7 +40,7 @@ describe app do
 			end
 	
 			it "should respond to post request with no data with an error, asking for data" do
-				post '/api/nr_mailer'
+				post '/api/mailer'
 	
 				last_response.status.should eq(400)
 				last_response.content_type.should eq(json_format)
@@ -48,7 +48,7 @@ describe app do
 			end
 
 			it "return an error if the data sent in the body is not JSON data" do
-				post '/api/nr_mailer', 'yo dawg whats up'
+				post '/api/mailer', 'yo dawg whats up'
 
 				last_response.status.should eq(400)
 				last_response.body.should eq( error_400 )
@@ -59,7 +59,7 @@ describe app do
 		context "has a correctly formated request" do
 
 			it "should recieve JSON data" do
-				post '/api/nr_mailer', demo_json
+				post '/api/mailer', demo_json
 				last_response.should be_ok
 			end
 

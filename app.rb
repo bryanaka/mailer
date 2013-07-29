@@ -49,7 +49,7 @@ get '/hello' do
 	'What up dawg'
 end
 
-post '/api/nr_mailer' do
+post '/api/mailer' do
 	request.body.rewind
 	json_data = request.body.read
 
