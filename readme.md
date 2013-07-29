@@ -19,7 +19,7 @@ Resources are always returned inside an array (both singular and collections)
 Usage and Set up
 --------------------------
 
-To use this app, you must make sure to set up the ENV['GMAIL\_USER'] and ENV['GMAIL\_PASSWORD'] variables. You can also use any other SMTP provider of your choice, such as Mandrill.
+To use this app, you must make sure to set up the ENV['MANDRILL\_USER'] and ENV['MANDRILL\_API\_KEY'] variables. You can also use any other SMTP provider of your choice, such as gMail.
 
 You can do this via the provided `secrets.rb` (see secrets.example.rb) or via something more akin Foreman's `.env` file or Fiagro's `application.yml` file
 

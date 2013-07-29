@@ -29,11 +29,11 @@ module Mailers
       :body     => request_data["body"],
       :via      => :smtp,
       :via_options => {
-        :address => 'smtp.gmail.com', # 'smtp.mandrillapp.com'
+        :address => 'smtp.mandrillapp.com',
         :enable_starttls_auto => true,
         :port => '587',
-        :user_name => ENV['GMAIL_USER'], # ENV['MANDRILL_USER'],
-        :password => ENV['GMAIL_PASSWORD'], # ENV['MANDRILL_API_KEY'],
+        :user_name => ENV['MANDRILL_USER'],
+        :password => ENV['MANDRILL_API_KEY'],
         :authentication => :plain, 
         :domain => "http://nr-mailer.herokuapp.com/" 
       }
