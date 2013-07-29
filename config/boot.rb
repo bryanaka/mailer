@@ -23,9 +23,11 @@ require 'pony'
 # auto-require the correct gem group
 Bundler.require(ENV["RACK_ENV"])
 
-
-# This could also go into a YAML file, ala Figaro Gem style
-require File.expand_path('../secrets', __FILE__)
+# if the environment variables already exist, do not load them
+if !ENV['GMAIL_USER'] || !ENV['MANDRILL_USER']
+	# This could also go into a YAML file, ala Figaro Gem style
+	require File.expand_path('../secrets', __FILE__)
+end
 
 # general config
 
