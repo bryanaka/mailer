@@ -25,15 +25,15 @@ Bundler.require(ENV["RACK_ENV"])
 
 # if the environment variables already exist, do not load them
 if !ENV['GMAIL_USER'] || !ENV['MANDRILL_USER']
-	# This could also go into a YAML file, ala Figaro Gem style
-	require File.expand_path('../secrets', __FILE__)
+  # This could also go into a YAML file, ala Figaro Gem style
+  require File.expand_path('../secrets', __FILE__)
 end
 
 # general config
 
 configure do
-	set :root, File.expand_path('../../', __FILE__)
-	set :app_file, File.expand_path('../../app', __FILE__)
+  set :root, File.expand_path('../../', __FILE__)
+  set :app_file, File.expand_path('../../app', __FILE__)
 end
 
 # environment specific config
@@ -41,11 +41,11 @@ end
 # require File.expand_path('../environments/' + ENV['RACK_ENV'] , __FILE__)
 
 configure :development, :test do
-	enable :logging, :dump_errors, :raise_errors
+  enable :logging, :dump_errors, :raise_errors
 end
 
 configure :production do
-	# need to add settings
+  # need to add settings
 end
 
 

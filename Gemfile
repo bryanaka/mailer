@@ -8,19 +8,19 @@ gem 'puma'
 gem 'pony'
 
 group :development do
-	gem 'shotgun'
-	gem 'guard-rspec'
-	gem 'guard-bundler'
-	gem 'rb-fsevent', '~> 0.9.1'
+  gem 'shotgun'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+  gem 'rb-fsevent', '~> 0.9.1'
 end
 
 group :development, :test do
-	gem 'tux'
+  gem 'tux'
 end
 
 group :test do 
-	gem 'rspec'
-	gem 'email_spec'
+  gem 'rspec'
+  gem 'email_spec'
 end
 
 group :production do
