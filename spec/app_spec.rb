@@ -47,10 +47,19 @@ describe app do
 				last_response.body.should eq( error_400 )
 			end
 
-			it "return an error if the data sent in the body is not JSON data" do
+			it "returns an error if the data sent in the body is not JSON data" do
 				post '/api/mailer', 'yo dawg whats up'
 
 				last_response.status.should eq(400)
+				last_response.content_type.should eq(json_format)
+				last_response.body.should eq( error_400 )
+			end
+
+			it "shold return an error if not all parameters are supplied" do
+				post 'api/mailer', {to: "bryanaka0@gmail.com"}.to_json
+
+				last_response.status.should eq(400)
+				last_response.content_type.should eq(json_format)
 				last_response.body.should eq( error_400 )
 			end
 

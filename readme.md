@@ -63,7 +63,6 @@ Example:
 
 1. Better error messages that specify where the error occured and why
 2. POST data should be similar to the data the app returns, in terms of format
-3. More encapsulation via modules, classes, etc. (if this app was to grow)
-4. 
+3. More encapsulation via modules, classes, etc. (if this app was to grow) 
 
 
