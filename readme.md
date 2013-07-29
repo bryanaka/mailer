@@ -35,13 +35,24 @@ Example of the data that should be posted:
 emails - JSON resource
 
 **emails attributes**  
-status: Status of the email message
-details: Right now, it is just the email itself, but will eventually be in a more data-consumable friendly format
+status: Status of the email message  
+details: Right now, it is just the email itself, but will eventually be in a more data-consumable friendly format  
 
 Example return data: 
 
     {"emails":[{"status":"Mail Sent","details":"Date: Mon, 29 Jul 2013 09:10:17 -0700\r\nFrom: do-not-reply@example.com\r\nTo: \"Bryan R.\" <bryanaka0@gmail.com>\r\nMessage-ID: <51f693e99c065_146ff3ff0114267d860458@Bryans-MacBook-Pro-3.local.mail>\r\nSubject: hello world\r\nMime-Version: 1.0\r\nContent-Type: text/plain;\r\n charset=UTF-8\r\nContent-Transfer-Encoding: 7bit\r\n\r\nHi John! Sending you an email via this awesome API I just made on the interwebs."}]}
 
 ## Errors
+
+This app currently returns two different errors, and uses HTTP Status Codes to communicate this.
+
+**400 - Bad Syntax**  
+  
+This error basically encapsulates all the errors that come with trying to POST data that is not properly formated and/or not JSON.
+
+**405 - Method not Supported**  
+  
+This error occurs when you try to access the resource via a Request Method that isn't allowed.
+All API calls in this app are only available through a POST request
 
 
