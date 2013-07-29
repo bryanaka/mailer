@@ -10,6 +10,7 @@ error 405 do
 	{errors: [{ message: 'This resource only responses to a POST request. Please refer to the documentation' }] }.to_json
 end
 
+# ensures that the content type is JSON and the Request is POST
 before '/api/*' do
 	content_type :json
 	if request.request_method != 'POST'
@@ -17,6 +18,7 @@ before '/api/*' do
 	end
 end
 
+# Mailers in their own module so it can be tested
 module Mailers
 
 	def email(request_data)
@@ -50,15 +52,13 @@ end
 post '/api/nr_mailer' do
 	request.body.rewind
 	json_data = request.body.read
-	if json_data != ''
-		begin
-			request_data = JSON.parse(json_data)
-		rescue JSON::ParserError
-			halt 400
-		end
-	else
+
+	begin
+		request_data = JSON.parse(json_data)
+	rescue JSON::ParserError
 		halt 400
 	end
+
 	mail_response = email(request_data)
 	{:emails => [{ :status => 'Mail Sent', :details => mail_response }] }.to_json
 end
