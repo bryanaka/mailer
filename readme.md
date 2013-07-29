@@ -16,7 +16,19 @@ Resources are always returned inside an array (both singular and collections)
     { "emails":[{...}] }
     { "errors":[{...}, {...}] }
 
-## Endpoints
+Usage and Set up
+--------------------------
+
+To use this app, you must make sure to set up the ENV['GMAIL\_USER'] and ENV['GMAIL\_PASSWORD'] variables. You can also use any other SMTP provider of your choice, such as Mandrill.
+
+You can do this via the provided `secrets.rb` (see secrets.example.rb) or via something more akin Foreman's `.env` file or Fiagro's `application.yml` file
+
+**This application will fail to launch if the environment variables are not present and the secrets.rb file is not present. Make the appropriate modifications for your use**
+
+For Heroku, make sure to use the `heroku config:set VAR_NAME=VAR_VALUE` command
+
+Endpoints
+-------------------------
 
 #### POST /api/mailer
 
@@ -42,15 +54,16 @@ Example return data:
 
     {"emails":[{"status":"Mail Sent","details":"Date: Mon, 29 Jul 2013 09:10:17 -0700\r\nFrom: do-not-reply@example.com\r\nTo: \"Bryan R.\" <bryanaka0@gmail.com>\r\nMessage-ID: <51f693e99c065_146ff3ff0114267d860458@Bryans-MacBook-Pro-3.local.mail>\r\nSubject: hello world\r\nMime-Version: 1.0\r\nContent-Type: text/plain;\r\n charset=UTF-8\r\nContent-Transfer-Encoding: 7bit\r\n\r\nHi John! Sending you an email via this awesome API I just made on the interwebs."}]}
 
-## Errors
+Errors
+-------------------------
 
 This app currently returns two different errors, and uses HTTP Status Codes to communicate this.
 
-**400 - Bad Syntax**  
+#### 400 - Bad Syntax   
   
 This error basically encapsulates all the errors that come with trying to POST data that is not properly formated and/or not JSON.
 
-**405 - Method Not Allowed**  
+#### 405 - Method Not Allowed  
   
 This error occurs when you try to access the resource via a Request Method that isn't allowed.
 All API calls in this app are only available through a POST request
@@ -59,7 +72,8 @@ Example:
 
     {"errors":[{"message":"This resource only responses to a POST request. Please refer to the documentation"}]}
 
-### Improvements to the app that can be made
+Improvements to the app that can be made
+-------------------------------------------
 
 1. Return better error messages that specify where the error occured and why
 2. POST data should be similar to the data the app returns, in terms of format

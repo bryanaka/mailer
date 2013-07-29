@@ -16,8 +16,6 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 require 'sinatra'
 require 'sinatra/json'
-require 'sinatra/config_file'
-require 'sinatra/respond_with'
 require 'pony'
 
 # auto-require the correct gem group

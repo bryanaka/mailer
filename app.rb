@@ -24,7 +24,7 @@ module Mailers
   def email(request_data)
     mail_options = {
       :to       => request_data["to"],
-      :from     => 'do-not-reply@example.com',
+      :from     => 'noreply@example.com',
       :subject  => request_data["subject"],
       :body     => request_data["body"],
       :via      => :smtp,
