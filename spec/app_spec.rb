@@ -2,7 +2,7 @@ require File.expand_path('../spec_helper', __FILE__)
 
 describe app do
 
-	let(:demo_json){ { to: "bryanaka0@gmail.com", subject: "hello world", body: "Hi John! Sending you an email via this awesome API I just made on the interwebs." }.to_json }
+	let(:demo_json){ { to: 'bryanaka0@gmail.com', subject: 'hello world', body: 'Hi John! Sending you an email via this awesome API I just made on the interwebs.' }.to_json }
 	let(:json_format){ 'application/json;charset=utf-8' }
 	let(:error_405){ { errors: [{ message: 'This resource only responses to a POST request. Please refer to the documentation' }] }.to_json }
 	let(:error_400){ { errors: [{ message: 'This resource requires you post JSON data with the "to", "subject", and "body" attributes.' }] }.to_json }
@@ -15,8 +15,16 @@ describe app do
 	end
 
 	it "#email helper method sends email" do
-		email_data = JSON.parse(demo_json)
-		email(email_data).should be_true
+		# Seems hacky, but the only way I knew how to properly test the helper modules
+		# Definitely needs to get refactored
+
+		# This allows use of the modules' public instance methods
+		Mailers.extend Mailers
+		# Call email wth the demo_json
+		response = Mailers.send(:email, JSON.parse(demo_json))
+
+		response.should_not be_empty
+
 	end
 
 	describe "New Relic Mailer Endpoint 'api/nr_mailer' " do

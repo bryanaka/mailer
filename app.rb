@@ -17,16 +17,48 @@ before '/api/*' do
 	end
 end
 
+module Mailers
+
+	def email(request_data)
+		mail_options = {
+			:to 			=> request_data["to"],
+			:from 		=> 'do-not-reply@example.com',
+			:subject 	=> request_data["subject"],
+			:body 		=> request_data["body"],
+			:via			=> :smtp,
+  		:via_options => {
+  			:address => 'smtp.gmail.com', # 'smtp.mandrillapp.com'
+  			:enable_starttls_auto => true,
+  			:port => '587',
+  			:user_name => ENV['GMAIL_USER'], # ENV['MANDRILL_USER'],
+  			:password => ENV['GMAIL_PASSWORD'], # ENV['MANDRILL_API_KEY'],
+  			:authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+  			:domain => "bryansbriefcase.com" 
+  		}
+		}
+		Pony.mail(mail_options)
+	end
+
+end
+
+helpers Mailers
+
 get '/hello' do
 	'What up dawg'
 end
 
 post '/api/nr_mailer' do
 	request.body.rewind
-	request_data = request.body.read
-	if request_data != ''
-		json_data = JSON.parse(request_data)
+	json_data = request.body.read
+	if json_data != ''
+		begin
+			request_data = JSON.parse(json_data)
+		rescue JSON::ParserError
+			halt 400
+		end
 	else
 		halt 400
 	end
+	mail_response = email(request_data)
+	{:emails => [{ :status => 'Mail Sent', :details => mail_response }] }.to_json
 end

@@ -8,6 +8,7 @@ RSpec.configure do |config|
 	config.include Rack::Test::Methods
 	config.include EmailSpec::Helpers
 	config.include EmailSpec::Matchers
+	config.include Mailers
 
 	def app
 	  Sinatra::Application

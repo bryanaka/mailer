@@ -5,3 +5,5 @@
 
 ENV['MANDRILL_USER'] 		||= 'username'
 ENV['MANDRILL_API_KEY'] ||= 'api_key'
+ENV['GMAIL_USER'] 			||= 'username'
+ENV['GMAIL_PASSWORD'] 	||= 'password'
