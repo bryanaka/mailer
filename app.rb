@@ -35,7 +35,7 @@ module Mailers
   			:user_name => ENV['GMAIL_USER'], # ENV['MANDRILL_USER'],
   			:password => ENV['GMAIL_PASSWORD'], # ENV['MANDRILL_API_KEY'],
   			:authentication => :plain, # :plain, :login, :cram_md5, no auth by default
-  			:domain => "bryansbriefcase.com" 
+  			:domain => "http://nr-mailer.herokuapp.com/" 
   		}
 		}
 		Pony.mail(mail_options)
@@ -60,5 +60,6 @@ post '/api/mailer' do
 	end
 
 	mail_response = email(request_data)
+	status 201
 	{:emails => [{ :status => 'Mail Sent', :details => mail_response }] }.to_json
 end

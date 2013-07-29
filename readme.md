@@ -50,7 +50,7 @@ This app currently returns two different errors, and uses HTTP Status Codes to c
   
 This error basically encapsulates all the errors that come with trying to POST data that is not properly formated and/or not JSON.
 
-**405 - Method not Supported**  
+**405 - Method Not Allowed**  
   
 This error occurs when you try to access the resource via a Request Method that isn't allowed.
 All API calls in this app are only available through a POST request
@@ -59,5 +59,11 @@ Example:
 
     {"errors":[{"message":"This resource only responses to a POST request. Please refer to the documentation"}]}
 
+### Improvements to the app that can be made
+
+1. Better error messages that specify where the error occured and why
+2. POST data should be similar to the data the app returns, in terms of format
+3. More encapsulation via modules, classes, etc. (if this app was to grow)
+4. 
 
 

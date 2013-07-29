@@ -58,13 +58,9 @@ describe app do
 
 		context "has a correctly formated request" do
 
-			it "should recieve JSON data" do
+			it "should recieve JSON data and send the email" do
 				post '/api/mailer', demo_json
-				last_response.should be_ok
-			end
-
-			it "should send an email according to the data sent in json" do
-				pending
+				last_response.status.should eq(201)
 			end
 
 		end
