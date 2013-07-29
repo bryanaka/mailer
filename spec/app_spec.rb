@@ -4,8 +4,15 @@ describe app do
 
   let(:demo_json){ { to: 'bryanaka0@gmail.com', subject: 'hello world', body: 'Hi John! Sending you an email via this awesome API I just made on the interwebs.' }.to_json }
   let(:json_format){ 'application/json;charset=utf-8' }
+  let(:should_be_json_content){ last_response.content_type.should eq(json_format) }
+  
   let(:error_405){ { errors: [{ message: 'This resource only responses to a POST request. Please refer to the documentation' }] }.to_json }
   let(:error_400){ { errors: [{ message: 'This resource requires you post JSON data with the "to", "subject", and "body" attributes.' }] }.to_json }
+
+  let(:should_be_generic_400_error) do
+    last_response.status.should eq(400)
+    last_response.body.should eq( error_400 )
+  end
 
   it "should not serve json to anything not under api" do
     get '/hello'
@@ -34,33 +41,31 @@ describe app do
       it "should respond to a get request with a 405 error" do
         get '/api/mailer'
 
+        should_be_json_content
         last_response.status.should eq(405)
-        last_response.content_type.should eq(json_format)
         last_response.body.should eq( error_405 )
       end
   
       it "should respond to post request with no data with an error, asking for data" do
         post '/api/mailer'
   
-        last_response.status.should eq(400)
-        last_response.content_type.should eq(json_format)
-        last_response.body.should eq( error_400 )
+        
+        should_be_json_content
+        should_be_generic_400_error
       end
 
       it "returns an error if the data sent in the body is not JSON data" do
         post '/api/mailer', 'yo dawg whats up'
 
-        last_response.status.should eq(400)
-        last_response.content_type.should eq(json_format)
-        last_response.body.should eq( error_400 )
+        should_be_json_content
+        should_be_generic_400_error
       end
 
-      it "shold return an error if not all parameters are supplied" do
-        post 'api/mailer', {to: "bryanaka0@gmail.com"}.to_json
+      it "should return an error if not all parameters are supplied" do
+        post 'api/mailer', {to: "bryanaka0@gmail.com", subject: "bro, do you like my lifted truck?"}.to_json
 
-        last_response.status.should eq(400)
-        last_response.content_type.should eq(json_format)
-        last_response.body.should eq( error_400 )
+        should_be_json_content
+        should_be_generic_400_error
       end
 
     end

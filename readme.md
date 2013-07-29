@@ -79,5 +79,3 @@ Improvements to the app that can be made
 2. POST data should be similar to the data the app returns, in terms of format
 3. More encapsulation via modules, classes, etc. (if this app was to grow) 
 4. Test E-mail capability more throughly
-
-

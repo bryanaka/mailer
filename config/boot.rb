@@ -42,8 +42,3 @@ configure :development, :test do
   enable :logging, :dump_errors, :raise_errors
 end
 
-configure :production do
-  # need to add settings
-end
-
-

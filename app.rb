@@ -34,7 +34,7 @@ module Mailers
         :port => '587',
         :user_name => ENV['GMAIL_USER'], # ENV['MANDRILL_USER'],
         :password => ENV['GMAIL_PASSWORD'], # ENV['MANDRILL_API_KEY'],
-        :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+        :authentication => :plain, 
         :domain => "http://nr-mailer.herokuapp.com/" 
       }
     }
@@ -45,6 +45,7 @@ end
 
 helpers Mailers
 
+# ignore this
 get '/hello' do
   'What up dawg'
 end
