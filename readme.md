@@ -23,7 +23,7 @@ To use this app, you must make sure to set up the ENV['MANDRILL\_USER'] and ENV[
 
 You can do this via the provided `secrets.rb` (see secrets.example.rb) or via something more akin Foreman's `.env` file or Fiagro's `application.yml` file
 
-**This application will fail to launch if the environment variables are not present and the secrets.rb file is not present. Make the appropriate modifications for your use**
+**This application will fail to launch if the environment variables are not present AND the secrets.rb file is not present. Make the appropriate modifications for your use**
 
 For Heroku, make sure to use the `heroku config:set VAR_NAME=VAR_VALUE` command
 
@@ -40,7 +40,7 @@ Endpoints
 
 Example of the data that should be posted:  
 
-    { "to": "John G <jmondo@newrelic.com>", "subject": "hello world", "body": "Hi John! Sending you an email via this awesome API I just made on the interwebs." }
+    { "to": "guy <yoguy@newrelic.com>", "subject": "hello world", "body": "Hi guy! Sending you an email via this awesome API I just made on the interwebs." }
 
 ##### Returns
 
