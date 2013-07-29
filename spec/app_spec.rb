@@ -15,7 +15,7 @@ describe app do
   end
 
   it "should not serve json to anything not under api" do
-    get '/hello'
+    get '/'
 
     last_response.should be_ok
     last_response.content_type.should_not eq(json_format)
@@ -49,7 +49,6 @@ describe app do
       it "should respond to post request with no data with an error, asking for data" do
         post '/api/mailer'
   
-        
         should_be_json_content
         should_be_generic_400_error
       end

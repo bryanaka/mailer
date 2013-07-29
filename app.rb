@@ -46,8 +46,8 @@ end
 helpers Mailers
 
 # ignore this
-get '/hello' do
-  'What up dawg'
+get '/' do
+  'What up dawg? I think you meant to post to /api/mailer. But no worries bro.'
 end
 
 post '/api/mailer' do
